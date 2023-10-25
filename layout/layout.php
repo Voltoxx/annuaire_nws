@@ -12,6 +12,7 @@
 <body>
     <header>
         <nav>
+            <a class="logo" href="../index.php"><img src="../assets/logo.jpg" alt="logo" class="logo"></a>
             <ul>
                 <li><a href="../index.php?page=list">Liste</a></li>
                 <li><a href="../index.php?page=add">Ajouter</a></li>

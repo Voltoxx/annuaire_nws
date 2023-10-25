@@ -5,6 +5,16 @@
     font-family: 'Poppins', sans-serif;
 }
 
+.logo{
+    width: 40px;
+    height: 40px;    
+}
+
+nav a{
+    font-size: 20px;
+    font-weight: bold;
+}
+
 body {
     background-color: #f2f2f2;
 }
@@ -27,6 +37,7 @@ ul {
 nav ul {
     display: flex;
     justify-content: flex-end;
+    margin-top: -35px;
 }
 
 nav ul li {
@@ -152,3 +163,4 @@ input[type=submit]{
 input[type=submit]:hover {
     background-color: #0069d9;
 }
+
