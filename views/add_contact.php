@@ -28,6 +28,18 @@ $content = "
         </div>
         <input type='text' name='telephone' id='telephone' required>
     </div>
+    <div class='label'>
+        <div>
+        <label for='specialite'>Spécialité</label>
+        </div>
+    <select name='specialitees' id='specialitees'>
+        <option value='Developpement Web'>Développement Web</option>
+        <option value='Communication Graphique'>Communication Graphique</option>
+        <option value='Marketing Digital'>Marketing Digital</option>
+        <option value='Communication Digital'>Communication Digital</option>
+        <option value='Ne sais pas encore'>Ne sais pas encore</option>
+    </select>
+    </div>
     <input type='submit' value='Ajouter'>
 </form>
 <a href='contacts_list.php'>Retour à la liste des contacts</a>

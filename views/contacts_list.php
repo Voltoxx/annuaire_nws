@@ -33,6 +33,7 @@ $content = "
         <option value='prenom'>Prénom</option>
         <option value='email'>Email</option>
         <option value='telephone'>Téléphone</option>
+        <option value='specialitees'>Spécialité</option>
     </select>
     <button type='button' id='filtreButton'>Filtrer</button>
     <script>
@@ -62,6 +63,7 @@ $content .= "</div>
         <th>Prénom</th>
         <th>Email</th>
         <th>Téléphone</th>
+        <th>Spécialité</th>
         <th>Actions</th>
     </tr>";
 
@@ -74,6 +76,7 @@ if (!empty($contacts)) {
             <td>" . $contact->getPrenom() . "</td>
             <td>" . $contact->getEmail() . "</td>
             <td>" . $contact->getTelephone() . "</td>
+            <td> " . $contact->getSpecialite() . "</td>
             <td>
                 <a href='edit_contact.php?id=" . $contact->getId() . "'>Modifier</a>
                 <a href='process_delete_contact.php?id=" . $contact->getId() . "'>Supprimer</a>

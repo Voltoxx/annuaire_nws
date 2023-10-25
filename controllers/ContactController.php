@@ -11,10 +11,10 @@ class ContactController
         $this->db = $db;
     }
 
-    public function addContact($nom, $prenom, $email, $telephone)
+    public function addContact($nom, $prenom, $email, $telephone, $specialite)
     {
         try {
-            $contact = new Contact(null, $nom, $prenom, $email, $telephone);
+            $contact = new Contact(null, $nom, $prenom, $email, $telephone, $specialite);
             $this->db->addContact($contact);
         } catch (InvalidArgumentException $e) {
             return ["error" => $e->getMessage()];
@@ -23,7 +23,7 @@ class ContactController
         }
     }
 
-    public function updateContact($id, $nom, $prenom, $email, $telephone)
+    public function updateContact($id, $nom, $prenom, $email, $telephone, $specialite)
     {
         try {
             $contact = $this->db->getContactById($id);
@@ -32,6 +32,7 @@ class ContactController
             $contact->setPrenom($prenom);
             $contact->setEmail($email);
             $contact->setTelephone($telephone);
+            $contact->setSpecialite($specialite);
 
             $this->db->updateContact($contact);
         } catch (Exception $e) {

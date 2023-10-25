@@ -21,24 +21,26 @@ class Database
 
     private function createContactObject($row)
     {
-        return new Contact($row['id'], $row['nom'], $row['prenom'], $row['email'], $row['telephone']);
+        return new Contact($row['id'], $row['nom'], $row['prenom'], $row['email'], $row['telephone'], $row['specialitees']);
     }
 
     public function addContact(Contact $contact)
     {
         try {
-            $sql = "INSERT INTO contacts (nom, prenom, email, telephone) VALUES (:nom, :prenom, :email, :telephone)";
+            $sql = "INSERT INTO contacts (nom, prenom, email, telephone, specialitees) VALUES (:nom, :prenom, :email, :telephone, :specialitees)";
             $stmt = $this->pdo->prepare($sql);
 
             $nom = htmlspecialchars($contact->getNom(), ENT_QUOTES, 'UTF-8');
             $prenom = htmlspecialchars($contact->getPrenom(), ENT_QUOTES, 'UTF-8');
             $email = filter_var($contact->getEmail(), FILTER_SANITIZE_EMAIL);
             $telephone = htmlspecialchars($contact->getTelephone(), ENT_QUOTES, 'UTF-8');
+            $specialitees = htmlspecialchars($contact->getSpecialite(), ENT_QUOTES, 'UTF-8');
 
             $stmt->bindParam(':nom', $nom);
             $stmt->bindParam(':prenom', $prenom);
             $stmt->bindParam(':email', $email);
             $stmt->bindParam(':telephone', $telephone);
+            $stmt->bindParam(':specialitees', $specialitees);
 
             $stmt->execute();
         } catch (PDOException $e) {
@@ -49,19 +51,21 @@ class Database
     public function updateContact(Contact $contact)
     {
         try {
-            $sql = "UPDATE contacts SET nom = :nom, prenom = :prenom, email = :email, telephone = :telephone WHERE id = :id";
+            $sql = "UPDATE contacts SET nom = :nom, prenom = :prenom, email = :email, telephone = :telephone, specialitees = :specialitees WHERE id = :id";
             $stmt = $this->pdo->prepare($sql);
 
             $nom = htmlspecialchars($contact->getNom(), ENT_QUOTES, 'UTF-8');
             $prenom = htmlspecialchars($contact->getPrenom(), ENT_QUOTES, 'UTF-8');
             $email = filter_var($contact->getEmail(), FILTER_SANITIZE_EMAIL);
             $telephone = htmlspecialchars($contact->getTelephone(), ENT_QUOTES, 'UTF-8');
+            $specialitees = htmlspecialchars($contact->getSpecialite(), ENT_QUOTES, 'UTF-8');
 
             $stmt->bindParam(':id', $contact->getId());
             $stmt->bindParam(':nom', $nom);
             $stmt->bindParam(':prenom', $prenom);
             $stmt->bindParam(':email', $email);
             $stmt->bindParam(':telephone', $telephone);
+            $stmt->bindParam(':specialitees', $specialitees);
 
             $stmt->execute();
         } catch (PDOException $e) {

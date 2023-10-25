@@ -6,14 +6,16 @@ class Contact
     private $prenom;
     private $email;
     private $telephone;
+    private $specialite;
 
-    public function __construct($id, $nom, $prenom, $email, $telephone)
+    public function __construct($id, $nom, $prenom, $email, $telephone, $specialite)
     {
         $this->id = $id;
         $this->setNom($nom);
         $this->setPrenom($prenom);
         $this->setEmail($email);
         $this->setTelephone($telephone);
+        $this->setSpecialite($specialite);
     }
 
     public function getId(): int
@@ -65,6 +67,16 @@ class Contact
         $this->telephone = $telephone;
     }
 
+    public function getSpecialite(): string
+    {
+        return $this->specialite;
+    }
+
+    public function setSpecialite(string $specialite)
+    {
+        $this->specialite = $specialite;
+    }
+
     public function getDetails(): array
     {
         return [
@@ -73,6 +85,7 @@ class Contact
             'Prénom' => $this->prenom,
             'Email' => $this->email,
             'Téléphone' => $this->telephone,
+            'Spécialité' => $this->specialite
         ];
     }
 }
