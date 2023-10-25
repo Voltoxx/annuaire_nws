@@ -145,8 +145,19 @@ class Database
     public function filtreContacts($filtre)
     {
         try {
-            $sql = "SELECT * FROM contacts ORDER BY {$filtre}";
-            $stmt = $this->pdo->prepare($sql);
+            if (
+                $filtre == 'Communication Digital' || $filtre == 'Communication Graphique' ||
+                $filtre == 'Développement Web' || $filtre == 'Marketing Digital' || $filtre == "Ne sais pas encore"
+            ) {
+                $sql = "SELECT * FROM contacts WHERE specialitees LIKE :filtre";
+                $stmt = $this->pdo->prepare($sql);
+
+                $filtre = "%{$filtre}%";
+                $stmt->bindParam(':filtre', $filtre);
+            } else {
+                $sql = "SELECT * FROM contacts ORDER BY {$filtre}";
+                $stmt = $this->pdo->prepare($sql);
+            }
 
             $stmt->execute();
 

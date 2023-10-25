@@ -33,7 +33,13 @@ $content = "
         <option value='prenom'>Prénom</option>
         <option value='email'>Email</option>
         <option value='telephone'>Téléphone</option>
-        <option value='specialitees'>Spécialité</option>
+        <optgroup label='Spécialités'>
+            <option value='Développement Web'>Développement Web</option>
+            <option value='Communication Digital'>Communication Digital</option>
+            <option value='Communication Graphique'>Communication Graphique</option>
+            <option value='Marketing Digital'>Marketing Digital</option>
+            <option value='Ne sais pas encore'>Ne sais pas encore</option>
+        </optgroup>
     </select>
     <button type='button' id='filtreButton'>Filtrer</button>
     <script>
